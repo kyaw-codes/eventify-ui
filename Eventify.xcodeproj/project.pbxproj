@@ -12,6 +12,8 @@
 		023EA15725D400D100D1D012 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 023EA15625D400D100D1D012 /* Assets.xcassets */; };
 		023EA15A25D400D100D1D012 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 023EA15925D400D100D1D012 /* Preview Assets.xcassets */; };
 		023EA15D25D400D100D1D012 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 023EA15B25D400D100D1D012 /* LaunchScreen.storyboard */; };
+		025FE00025E12CAC0078A169 /* EventHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025FDFFF25E12CAC0078A169 /* EventHeaderTableViewCell.swift */; };
+		025FE00325E18EAA0078A169 /* EventBodyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025FE00225E18EA90078A169 /* EventBodyTableViewCell.swift */; };
 		02640E1F25DD337100D9C42B /* MKTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02640E1E25DD337100D9C42B /* MKTabBarController.swift */; };
 		02640E2325DE1EC900D9C42B /* MKTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02640E2225DE1EC900D9C42B /* MKTabBar.swift */; };
 		02640E2625DE1F7900D9C42B /* MKTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02640E2525DE1F7900D9C42B /* MKTabItem.swift */; };
@@ -40,6 +42,8 @@
 		023EA15925D400D100D1D012 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		023EA15C25D400D100D1D012 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		023EA15E25D400D100D1D012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		025FDFFF25E12CAC0078A169 /* EventHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		025FE00225E18EA90078A169 /* EventBodyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBodyTableViewCell.swift; sourceTree = "<group>"; };
 		02640E1E25DD337100D9C42B /* MKTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKTabBarController.swift; sourceTree = "<group>"; };
 		02640E2225DE1EC900D9C42B /* MKTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKTabBar.swift; sourceTree = "<group>"; };
 		02640E2525DE1F7900D9C42B /* MKTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKTabItem.swift; sourceTree = "<group>"; };
@@ -136,10 +140,8 @@
 		028CE81F25D7CD960000AE5D /* TableView */ = {
 			isa = PBXGroup;
 			children = (
-				028CE82125D7CDC40000AE5D /* StoryTableViewCell.swift */,
-				028CE82F25D81B1F0000AE5D /* PostWithPhotoTableViewCell.swift */,
-				029FA37A25D8F7C400418D66 /* PostWithJobTableViewCell.swift */,
-				029FA38325DAC3D000418D66 /* PostWithTextOnlyTableViewCell.swift */,
+				0294139B25E127AB00ACAB38 /* Event Details */,
+				0294139925E1278700ACAB38 /* Home */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -147,7 +149,7 @@
 		028CE82025D7CD9C0000AE5D /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				028CE82625D7CE060000AE5D /* StoryCollectionViewCell.swift */,
+				0294139A25E1279F00ACAB38 /* Home */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -158,6 +160,34 @@
 				028CE82A25D819FF0000AE5D /* StoryVO.swift */,
 			);
 			path = VO;
+			sourceTree = "<group>";
+		};
+		0294139925E1278700ACAB38 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				028CE82125D7CDC40000AE5D /* StoryTableViewCell.swift */,
+				028CE82F25D81B1F0000AE5D /* PostWithPhotoTableViewCell.swift */,
+				029FA37A25D8F7C400418D66 /* PostWithJobTableViewCell.swift */,
+				029FA38325DAC3D000418D66 /* PostWithTextOnlyTableViewCell.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0294139A25E1279F00ACAB38 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				028CE82625D7CE060000AE5D /* StoryCollectionViewCell.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0294139B25E127AB00ACAB38 /* Event Details */ = {
+			isa = PBXGroup;
+			children = (
+				025FDFFF25E12CAC0078A169 /* EventHeaderTableViewCell.swift */,
+				025FE00225E18EA90078A169 /* EventBodyTableViewCell.swift */,
+			);
+			path = "Event Details";
 			sourceTree = "<group>";
 		};
 		029FA37E25D8F90700418D66 /* Extensions */ = {
@@ -358,12 +388,14 @@
 				028CE82B25D819FF0000AE5D /* StoryVO.swift in Sources */,
 				02D0A4F925D40237001C8049 /* EventDetailsViewController.swift in Sources */,
 				028CE82225D7CDC40000AE5D /* StoryTableViewCell.swift in Sources */,
+				025FE00325E18EAA0078A169 /* EventBodyTableViewCell.swift in Sources */,
 				029FA37B25D8F7C400418D66 /* PostWithJobTableViewCell.swift in Sources */,
 				023EA15325D400CF00D1D012 /* SceneDelegate.swift in Sources */,
 				029FA38925DACBB700418D66 /* MKPhotoGridViewController.swift in Sources */,
 				02D0A4FF25D40248001C8049 /* ChatViewController.swift in Sources */,
 				02D0A4FC25D40241001C8049 /* LocationViewController.swift in Sources */,
 				029FA38425DAC3D000418D66 /* PostWithTextOnlyTableViewCell.swift in Sources */,
+				025FE00025E12CAC0078A169 /* EventHeaderTableViewCell.swift in Sources */,
 				028CE83025D81B1F0000AE5D /* PostWithPhotoTableViewCell.swift in Sources */,
 				02D0A50225D4024C001C8049 /* ProfileViewController.swift in Sources */,
 				02D0A4F625D4022F001C8049 /* HomeViewController.swift in Sources */,

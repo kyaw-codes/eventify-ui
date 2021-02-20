@@ -15,6 +15,8 @@ class MKTabBar: UIView {
     
     var currentActiveIndex = 0
 
+    var tabBackgroundColor: UIColor = .colorPrimary
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -29,7 +31,7 @@ class MKTabBar: UIView {
         self.init(frame: .zero)
         
         // Set up layout
-        backgroundColor = .colorPrimary
+        backgroundColor = tabBackgroundColor
         
         for i in 0..<menuItems.count {
             let item = menuItems[i]
