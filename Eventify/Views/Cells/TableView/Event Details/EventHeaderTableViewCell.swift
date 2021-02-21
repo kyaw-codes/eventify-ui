@@ -22,7 +22,7 @@ class EventHeaderTableViewCell: UITableViewCell {
     fileprivate lazy var eventDetailsLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 26, weight: .semibold)
         label.text = "Event Details"
         return label
     }()
@@ -60,7 +60,7 @@ class EventHeaderTableViewCell: UITableViewCell {
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         label.snp.makeConstraints { (make) in
-            make.width.equalTo(110)
+            make.width.equalTo(100)
             make.height.equalTo(32)
         }
         label.layer.cornerRadius = 4
@@ -84,7 +84,8 @@ class EventHeaderTableViewCell: UITableViewCell {
         // Layout Event Details Label
         addSubview(eventDetailsLabel)
         eventDetailsLabel.snp.makeConstraints { (make) in
-            make.top.leading.equalToSuperview().inset(20)
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview().inset(20)
         }
         
         // Layout title label

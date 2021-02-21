@@ -30,7 +30,7 @@ public enum MKTabItem: CaseIterable {
         case .home:
             return UINavigationController(rootViewController: HomeViewController())
         case .eventDetail:
-            return EventDetailsViewController()
+            return UINavigationController(rootViewController: EventDetailsViewController())
         case .location:
             return LocationViewController()
         case .chat:

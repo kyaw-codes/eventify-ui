@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		020B628325E23A0A00E867BD /* MKProfileImagesStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B628225E23A0A00E867BD /* MKProfileImagesStackView.swift */; };
 		023EA15125D400CF00D1D012 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EA15025D400CF00D1D012 /* AppDelegate.swift */; };
 		023EA15325D400CF00D1D012 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EA15225D400CF00D1D012 /* SceneDelegate.swift */; };
 		023EA15725D400D100D1D012 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 023EA15625D400D100D1D012 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		020B628225E23A0A00E867BD /* MKProfileImagesStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKProfileImagesStackView.swift; sourceTree = "<group>"; };
 		023EA14D25D400CF00D1D012 /* Eventify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		023EA15025D400CF00D1D012 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		023EA15225D400CF00D1D012 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				02640E1E25DD337100D9C42B /* MKTabBarController.swift */,
 				02640E2225DE1EC900D9C42B /* MKTabBar.swift */,
 				02640E2525DE1F7900D9C42B /* MKTabItem.swift */,
+				020B628225E23A0A00E867BD /* MKProfileImagesStackView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				02D0A4F925D40237001C8049 /* EventDetailsViewController.swift in Sources */,
 				028CE82225D7CDC40000AE5D /* StoryTableViewCell.swift in Sources */,
 				025FE00325E18EAA0078A169 /* EventBodyTableViewCell.swift in Sources */,
+				020B628325E23A0A00E867BD /* MKProfileImagesStackView.swift in Sources */,
 				029FA37B25D8F7C400418D66 /* PostWithJobTableViewCell.swift in Sources */,
 				023EA15325D400CF00D1D012 /* SceneDelegate.swift in Sources */,
 				029FA38925DACBB700418D66 /* MKPhotoGridViewController.swift in Sources */,
