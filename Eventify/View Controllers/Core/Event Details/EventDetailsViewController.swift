@@ -10,7 +10,9 @@ import SnapKit
 
 class EventDetailsViewController: UIViewController {
     
-    fileprivate lazy var cancelButtonView: UIView = {
+    // MARK: - Views
+    
+    lazy var cancelButtonView: UIView = {
         let cancelLabel = UILabel()
         cancelLabel.text = "Cancel"
         cancelLabel.font = UIFont.systemFont(ofSize: 16)
@@ -35,14 +37,14 @@ class EventDetailsViewController: UIViewController {
         return scrollView
     }()
     
-    fileprivate lazy var backgroundImageView: UIImageView = {
+    lazy var backgroundImageView: UIImageView = {
         let iv = UIImageView(image: UIImage(named: "mountain"))
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         return iv
     }()
     
-    fileprivate lazy var eventDetailsLabel: UILabel = {
+    lazy var eventDetailsLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 26)
@@ -50,7 +52,7 @@ class EventDetailsViewController: UIViewController {
         return label
     }()
     
-    fileprivate lazy var titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 34, weight: .semibold)
@@ -67,7 +69,7 @@ class EventDetailsViewController: UIViewController {
         return label
     }()
     
-    fileprivate lazy var countryLabel: UILabel = {
+    lazy var countryLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 34, weight: .semibold)
         label.textColor = .white
@@ -75,7 +77,7 @@ class EventDetailsViewController: UIViewController {
         return label
     }()
     
-    fileprivate lazy var hikingBadge: UILabel = {
+    lazy var hikingBadge: UILabel = {
         let label = UILabel()
         label.text = "Hiking".uppercased()
         label.textColor = .white
@@ -91,7 +93,7 @@ class EventDetailsViewController: UIViewController {
         return label
     }()
     
-    fileprivate lazy var descriptionLabel: UILabel = {
+    lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 16)
@@ -109,7 +111,7 @@ class EventDetailsViewController: UIViewController {
         return label
     }()
     
-    fileprivate lazy var sendButton: UIButton = {
+    lazy var sendButton: UIButton = {
         let button = UIButton()
         let sendIcon = UIImage(systemName: "paperplane.fill", withConfiguration: UIImage.SymbolConfiguration(font: UIFont.systemFont(ofSize: 18)))?.withRenderingMode(.alwaysOriginal).withTintColor(.white)
         button.setImage(sendIcon, for: .normal)
@@ -122,7 +124,7 @@ class EventDetailsViewController: UIViewController {
         return button
     }()
     
-    fileprivate lazy var profilesStackView: MKProfileImagesStackView = {
+    lazy var profilesStackView: MKProfileImagesStackView = {
         let imageWidth: CGFloat = 40
         let view = MKProfileImagesStackView(images: [UIImage(named: "kasumi")!, UIImage(named: "kumada_rinka")!, UIImage(named: "mary")!], size: CGSize(width: imageWidth, height: imageWidth))
         view.snp.makeConstraints { (make) in
@@ -132,7 +134,7 @@ class EventDetailsViewController: UIViewController {
         return view
     }()
     
-    fileprivate lazy var attendanceCountLabel: UILabel = {
+    lazy var attendanceCountLabel: UILabel = {
         let label = UILabel()
         
         label.font = UIFont.systemFont(ofSize: 16)
@@ -145,7 +147,7 @@ class EventDetailsViewController: UIViewController {
         return label
     }()
     
-    fileprivate lazy var attendButton: UIButton = {
+    lazy var attendButton: UIButton = {
         let button = UIButton()
         button.setTitle("Attend", for: .normal)
         button.backgroundColor = .colorAccent
@@ -159,7 +161,7 @@ class EventDetailsViewController: UIViewController {
         return button
     }()
     
-    fileprivate lazy var notGoingButton: UIButton = {
+    lazy var notGoingButton: UIButton = {
         let button = UIButton()
         button.setTitle("Not going", for: .normal)
         button.backgroundColor = .clear
@@ -175,7 +177,7 @@ class EventDetailsViewController: UIViewController {
         return button
     }()
     
-    fileprivate lazy var shareButton: UIButton = {
+    lazy var shareButton: UIButton = {
         let button = UIButton()
         let iconConfig = UIImage.SymbolConfiguration(font: UIFont.boldSystemFont(ofSize: 18))
         let shareIcon = UIImage(systemName: "arrowshape.turn.up.forward", withConfiguration: iconConfig)?.withRenderingMode(.alwaysOriginal).withTintColor(.white)
@@ -190,140 +192,61 @@ class EventDetailsViewController: UIViewController {
         button.layer.masksToBounds = true
         return button
     }()
+    
+    var backgroundGradientLayer: CAGradientLayer!
  
+    // MARK: - Lifecycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Setup navbar
-        navigationController?.view.backgroundColor = .clear
-        navigationController?.navigationBar.isTranslucent = true
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        
-        let backIconConfig = UIImage.SymbolConfiguration(font: UIFont.boldSystemFont(ofSize: 16))
-        
-        let backIcon = UIImage(systemName: "chevron.backward", withConfiguration: backIconConfig)?
-            .withRenderingMode(.alwaysOriginal)
-            .withTintColor(.white)
-            
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: backIcon, style: .plain, target: nil, action: nil)
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: cancelButtonView)
+        configureNavBar()
 
         view.addSubview(scrollView)
+
+        // Add gradient layer to the background image
+        backgroundGradientLayer = CAGradientLayer()
+        backgroundGradientLayer.colors = [
+            UIColor.colorSecondary.cgColor,
+            UIColor.clear.withAlphaComponent(0.2).cgColor,
+            UIColor.colorSecondary.cgColor
+        ]
         
-        scrollView.addSubview(backgroundImageView)
-        scrollView.addSubview(eventDetailsLabel)
-        scrollView.addSubview(titleLabel)
-        scrollView.addSubview(countryLabel)
-        scrollView.addSubview(hikingBadge)
-        scrollView.addSubview(descriptionLabel)
-        scrollView.addSubview(sendButton)
-        scrollView.addSubview(profilesStackView)
-        scrollView.addSubview(attendanceCountLabel)
-        scrollView.addSubview(attendButton)
-        scrollView.addSubview(notGoingButton)
-        scrollView.addSubview(shareButton)
+        backgroundGradientLayer.locations = [0, 0.5, 0.95]
+
+        addSubViewToScrollView(backgroundImageView, eventDetailsLabel, titleLabel, countryLabel, hikingBadge, descriptionLabel, sendButton, profilesStackView, attendanceCountLabel, attendButton, notGoingButton, shareButton)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        scrollView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-        
-        // Layout background image view
-        backgroundImageView.snp.makeConstraints { (make) in
-            make.leading.top.trailing.equalToSuperview()
-            make.height.equalTo(view.frame.height / 2.2)
-            make.width.equalToSuperview()
-        }
+        layoutSubViews()
 
-        // Add gradient layer
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [
-            UIColor.colorSecondary.withAlphaComponent(0.8).cgColor,
-            UIColor.colorSecondary.withAlphaComponent(0.6).cgColor,
-            UIColor.colorSecondary.withAlphaComponent(0.2).cgColor,
-            UIColor.colorSecondary.withAlphaComponent(0.8).cgColor
-        ]
-        
-        gradientLayer.locations = [0, 0.1, 0.5, 0.9]
-        gradientLayer.frame = backgroundImageView.bounds
-        backgroundImageView.layer.addSublayer(gradientLayer)
-        
-        // Layout Event Details Label
-        eventDetailsLabel.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().inset(8)
-            make.leading.equalToSuperview().inset(20)
-        }
-        
-        // Layout title label
-        titleLabel.snp.makeConstraints { (make) in
-            make.leading.trailing.equalTo(backgroundImageView).inset(20)
-        }
-        
-        // Layout country label
-        countryLabel.snp.makeConstraints { (make) in
-            make.leading.equalTo(backgroundImageView).inset(20)
-            make.top.equalTo(titleLabel.snp.bottom).inset(-6)
-            make.bottom.equalTo(backgroundImageView)
-        }
-        
-        // Layout hiking badge
-        hikingBadge.snp.makeConstraints { (make) in
-            make.centerY.equalTo(countryLabel)
-            make.leading.equalTo(countryLabel.snp.trailing).inset(-20)
-            
-        }
-        
-        // Layout description label
-        descriptionLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(backgroundImageView.snp.bottom).inset(-30)
-            make.leading.equalToSuperview().inset(20)
-            make.trailing.equalTo(sendButton.snp.leading).inset(-20)
-        }
-        
-        // Layout send button
-        sendButton.snp.makeConstraints { (make) in
-            make.top.equalTo(backgroundImageView.snp.bottom).inset(-40)
-            make.trailing.equalToSuperview().inset(24)
-        }
-        
-        // Layout profile images stack
-        profilesStackView.snp.makeConstraints { (make) in
-            make.leading.equalToSuperview().inset(20)
-            make.top.equalTo(descriptionLabel.snp.bottom).inset(-40)
-        }
-        
-        // Layout attendance count label
-        attendanceCountLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(profilesStackView)
-            make.leading.equalTo(profilesStackView.snp.trailing).inset(-10)
-        }
-        
-        // Layout attend button
-        attendButton.snp.makeConstraints { (make) in
-            make.leading.equalToSuperview().inset(20)
-            make.top.equalTo(profilesStackView.snp.bottom).inset(-40)
-            make.bottom.greaterThanOrEqualTo(scrollView.snp.bottom).inset(30)
-        }
-        
-        // Layout not going button
-        notGoingButton.snp.makeConstraints { (make) in
-            make.leading.equalTo(attendButton.snp.trailing).inset(-10)
-            make.centerY.equalTo(attendButton)
-        }
-
-        // Layout share button
-        shareButton.snp.makeConstraints { (make) in
-            make.leading.equalTo(notGoingButton.snp.trailing).inset(-10)
-            make.trailing.equalToSuperview().inset(20)
-            make.centerY.equalTo(attendButton)
-        }
-    
+        backgroundGradientLayer.frame = backgroundImageView.bounds
+        backgroundImageView.layer.addSublayer(backgroundGradientLayer)
     }
+    
+    // MARK: - Helper Methods
+    
+    fileprivate func configureNavBar() {
+        // Make navigation bar background transparent
+        navigationController?.view.backgroundColor = .clear
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        // Set up bar button items
+        let backIconConfig = UIImage.SymbolConfiguration(font: UIFont.boldSystemFont(ofSize: 16))
+        
+        let backIcon = UIImage(systemName: "chevron.backward", withConfiguration: backIconConfig)?
+            .withRenderingMode(.alwaysOriginal)
+            .withTintColor(.white)
+                
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: backIcon, style: .plain, target: nil, action: nil)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: cancelButtonView)
+    }
+    
 }
 
 struct EventViewController_Preview: PreviewProvider {
