@@ -242,8 +242,14 @@ class EventDetailsViewController: UIViewController {
 
         // Add gradient layer
         let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [UIColor.colorSecondary.cgColor, UIColor.clear.cgColor, UIColor.clear.cgColor, UIColor.colorSecondary.cgColor]
-        gradientLayer.locations = [0, 0.5, 0.8, 1]
+        gradientLayer.colors = [
+            UIColor.colorSecondary.withAlphaComponent(0.8).cgColor,
+            UIColor.colorSecondary.withAlphaComponent(0.6).cgColor,
+            UIColor.colorSecondary.withAlphaComponent(0.2).cgColor,
+            UIColor.colorSecondary.withAlphaComponent(0.8).cgColor
+        ]
+        
+        gradientLayer.locations = [0, 0.1, 0.5, 0.9]
         gradientLayer.frame = backgroundImageView.bounds
         backgroundImageView.layer.addSublayer(gradientLayer)
         
